@@ -1,9 +1,16 @@
-import {PropsWithChildren} from "react";
+import {FooterLink} from "@/components/FooterLink";
 
-export function Footer({children}: PropsWithChildren) {
+interface FooterItems {
+  href: string;
+  text: string;
+}
+
+export function Footer({items}: { items: FooterItems[] }) {
   return (
     <footer className={'flex justify-evenly items-center max-w-[1000px] mx-auto p-4'}>
-      {children}
+      { items.map((item, index) => (
+        <FooterLink href={item.href} text={item.text} key={index}/>
+      ))}
     </footer>
   )
 }

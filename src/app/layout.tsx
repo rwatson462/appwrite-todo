@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
 import "./globals.css";
 import {FooterLink} from "@/components/FooterLink";
-import {HeaderLink} from "@/components/HeaderLink";
 import {ReactNode} from "react";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
+import {Client} from "appwrite";
 
 const comicNeue = Comic_Neue({ subsets: ["latin"], weight: ['400', '700']});
 
@@ -26,13 +26,15 @@ export default function RootLayout({children}: { children: ReactNode }) {
         {href: '/login', text: 'Login'},
         {href: '/logout', text: 'Log out'},
         {href: '/profile', text: 'Profile'},
-      ]} />
+      ]}/>
+
       {children}
-      <Footer>
-        <FooterLink href={'https://appwrite.io'} text={'Appwrite.io'} />
-        <FooterLink href={'https://vercel.app'} text={'Vercel.app'} />
-        <FooterLink href={'https://github.com'} text={'Github.com'} />
-      </Footer>
+
+      <Footer items={[
+        {href: 'https://appwrite.io', text: 'Appwrite.io'},
+        {href: 'https://vercel.app', text: 'Vercel.app'},
+        {href: 'https://github.com', text: 'Github.com'},
+      ]}/>
     </body>
     </html>
   );

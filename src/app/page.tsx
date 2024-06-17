@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
+import {TextLink} from "@/components/TextLink";
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
 
       <section>
         <p>This bit shows when you're not logged in.</p>
-        <p><Link href={'/login'} className={'underline text-gray-600 hover:text-blue-600'}>Log in</Link> to get started.</p>
+        <p>
+          <TextLink href={'/login'} text={'Login'}/> or&nbsp;
+          <TextLink href={'/register'} text={'Register'}/> to get started.</p>
       </section>
     </Main>
   );
