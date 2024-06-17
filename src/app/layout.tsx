@@ -5,7 +5,6 @@ import {FooterLink} from "@/components/FooterLink";
 import {ReactNode} from "react";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
-import {Client} from "appwrite";
 
 const comicNeue = Comic_Neue({ subsets: ["latin"], weight: ['400', '700']});
 
