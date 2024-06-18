@@ -15,5 +15,5 @@ export default function Home() {
           <TextLink href={'/register'} text={'Register'}/> to get started.</p>
       </section>
     </Main>
-  );
+  )
 }

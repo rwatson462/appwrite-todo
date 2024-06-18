@@ -1,9 +1,11 @@
-import {Account, AppwriteException, ID} from "appwrite";
-import {client} from "@/app/setup/appwrite";
-import {redirect} from "next/navigation";
+'use server'
+
+import {Account, AppwriteException, ID} from "appwrite"
+import {client} from "@/app/setup/appwrite"
+import {login} from "@/actions/login"
 
 export async function registerUser(form: FormData) {
-  'use server';
+  'use server'
 
   const account = new Account(client)
 
@@ -16,12 +18,8 @@ export async function registerUser(form: FormData) {
       ID.unique(), email, password, name
     )
 
-    await account.createEmailPasswordSession(
-      email,
-      password
-    );
-
-    redirect('/dashboard')
+    // pass the register form straight through so we can reuse the login form action
+    return await login(form)
   } catch(err) {
     console.error((err as AppwriteException).message)
     return

@@ -1,5 +1,5 @@
-import {Main} from "@/components/Main";
-import {PageTitle} from "@/components/PageTitle";
+import {Main} from "@/components/Main"
+import {PageTitle} from "@/components/PageTitle"
 
 
 export default function Page({}) {

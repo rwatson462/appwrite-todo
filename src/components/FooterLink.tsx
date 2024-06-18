@@ -8,5 +8,5 @@ export function FooterLink({href, text}: { href: string, text: string }) {
       target={'_blank'}
       rel={'noopener noreferrer'}
     >{text}</Link>
-  );
+  )
 }
