@@ -6,7 +6,7 @@ import {Footer} from "@/components/Footer"
 import {Header} from "@/components/Header"
 import {HeaderNav} from "@/components/HeaderNav"
 import {HeaderLink} from "@/components/HeaderLink"
-import {LogoutButton} from "@/components/Buttonss/LogoutButton"
+import {LogoutButton} from "@/components/Buttons/LogoutButton"
 
 const comicNeue = Comic_Neue({ subsets: ["latin"], weight: ['400', '700']})
 
