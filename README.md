@@ -17,3 +17,21 @@ Creating a new project is easy:
 4. Create Appwrite account - https://appwrite.io
 5. Install Appwrite
 6. Refactor view to use Appwrite
+
+
+## Todo.
+
+- [ ] Figure out emails for account verification (or turning it off)
+- [ ] Add some "logged in" state passed
+- [ ] Create a wrapper to hide authenticated routes and components
+- [ ] Figure out redirects after posting forms (url param doesn't seem to do anything)
+- [ ] Add "Lists" page
+  - [ ] Create List form
+  - [ ] Show lists
+  - [ ] View list contents
+- [ ] Create default List when registering
+- [ ] Add some content to a Dashboard
+- [ ] Add user profile page
+  - [ ] Allow account deletion
+  - [ ] Allow password change
+  - [ ] Allow email change
