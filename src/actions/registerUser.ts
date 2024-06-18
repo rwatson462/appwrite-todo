@@ -1,13 +1,11 @@
 'use server'
 
-import {Account, AppwriteException, ID} from "appwrite"
-import {client} from "@/app/setup/appwrite"
+import {AppwriteException, ID} from "appwrite"
 import {login} from "@/actions/login"
+import {account} from "@/app/setup/appwrite";
 
 export async function registerUser(form: FormData) {
   'use server'
-
-  const account = new Account(client)
 
   const email = form.get('email') as string
   const name = form.get('name') as string
