@@ -1,6 +1,6 @@
 'use server'
 
-import {Client, Account, AppwriteException} from "node-appwrite";
+import {Client, Account, AppwriteException, Databases} from "node-appwrite";
 import {cookies} from "next/headers";
 import {SESSION_NAME} from "@/lib/config";
 
@@ -27,6 +27,9 @@ export async function createSessionClient() {
   return {
     get account() {
       return new Account(client)
+    },
+    get databases() {
+      return new Databases(client)
     }
   }
 }

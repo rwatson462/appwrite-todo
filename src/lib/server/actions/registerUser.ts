@@ -1,7 +1,7 @@
 'use server'
 
 import {ID} from "node-appwrite"
-import {login} from "@/actions/login"
+import {login} from "@/lib/server/actions/login"
 import {createAdminClient} from "@/lib/server/appwrite";
 
 export async function registerUser(form: FormData) {

@@ -1,7 +1,7 @@
 import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
 import {Input} from "@/components/Form/Input";
-import {registerUser} from "@/actions/registerUser";
+import {registerUser} from "@/lib/server/actions/registerUser";
 import {getLoggedInUser} from "@/lib/server/appwrite";
 import {redirect} from "next/navigation";
 

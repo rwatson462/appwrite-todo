@@ -37,7 +37,6 @@ export default async function RootLayout({children}: { children: ReactNode }) {
           <HeaderNav>
             <LoggedInWrapper>
             <HeaderLink href={'/dashboard'} text={'Dashboard'}/>
-            <HeaderLink href={'/lists'} text={'Lists'}/>
             </LoggedInWrapper>
           </HeaderNav>
           <HeaderNav>

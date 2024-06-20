@@ -1,7 +1,7 @@
 import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
 import {Input} from "@/components/Form/Input";
-import {login} from "@/actions/login";
+import {login} from "@/lib/server/actions/login";
 import {redirectIfAuthenticated} from "@/lib/server/redirectIfAuthenticated";
 
 /**
