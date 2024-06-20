@@ -1,8 +1,8 @@
 'use server'
 
-import {AppwriteException, ID} from "appwrite"
+import {ID} from "node-appwrite"
 import {login} from "@/actions/login"
-import {account} from "@/app/setup/appwrite";
+import {createAdminClient} from "@/lib/server/appwrite";
 
 export async function registerUser(form: FormData) {
   'use server'
@@ -11,15 +11,14 @@ export async function registerUser(form: FormData) {
   const name = form.get('name') as string
   const password = form.get('password') as string
 
-  try {
-    const user = await account.create(
-      ID.unique(), email, password, name
-    )
+  const { account } = await createAdminClient()
 
-    // pass the register form straight through so we can reuse the login form action
-    return await login(form)
+  try {
+    await account.create(ID.unique(), email, password, name)
   } catch(err) {
-    console.error((err as AppwriteException).message)
-    return
+    console.error(err)
   }
+
+  // pass the register form straight through so we can reuse the login form action
+  await login(form)
 }

@@ -2,8 +2,16 @@ import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
 import {Input} from "@/components/Form/Input";
 import {login} from "@/actions/login";
+import {redirectIfAuthenticated} from "@/lib/server/redirectIfAuthenticated";
 
-export default function Page({}) {
+/**
+ * The login page.
+ * Notes:
+ *   SSR checking for logged in user means you cannot access this page if you are logged in.
+ */
+export default async function Page({}) {
+  await redirectIfAuthenticated('/dashboard')
+
   return (
     <Main>
       <PageTitle title={'Login page'} subtitle={'Stick your details in below to access the good stuff'}/>

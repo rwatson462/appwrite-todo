@@ -2,10 +2,18 @@ import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
 import {Input} from "@/components/Form/Input";
 import {registerUser} from "@/actions/registerUser";
+import {getLoggedInUser} from "@/lib/server/appwrite";
+import {redirect} from "next/navigation";
 
 
 
-export default function Page({}) {
+export default async function Page({}) {
+  const user = await getLoggedInUser()
+
+  if (user !== null) {
+    redirect('/dashboard')
+  }
+
   return (
     <Main>
       <PageTitle title={'Register for an account'} subtitle={'Creating an account is FREE and I won\'t sell your data'} />
