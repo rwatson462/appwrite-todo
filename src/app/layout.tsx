@@ -54,9 +54,10 @@ export default async function RootLayout({children}: { children: ReactNode }) {
 
         {children}
         <Footer items={[
-          {href: 'https://appwrite.io', text: 'Appwrite.io'},
-          {href: 'https://vercel.app', text: 'Vercel.app'},
-          {href: 'https://github.com', text: 'Github.com'},
+          {href: 'https://appwrite.io', text: 'Appwrite'},
+          {href: 'https://vercel.app', text: 'Vercel'},
+          {href: 'https://github.com', text: 'Github'},
+          {href: 'https://threads.net', text: 'Threads'},
         ]}/>
       </AuthProvider>
     </body>
