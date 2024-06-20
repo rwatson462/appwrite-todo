@@ -10,6 +10,7 @@ import {LogoutButton} from "@/components/Buttons/LogoutButton"
 import {AuthProvider} from "@/components/Auth/AuthProvider";
 import {LoggedInWrapper} from "@/components/Auth/LoggedInWrapper";
 import {getLoggedInUser} from "@/lib/server/appwrite";
+import {LoggedOutWrapper} from "@/components/Auth/LoggedOutWrapper";
 
 const comicNeue = Comic_Neue({subsets: ["latin"], weight: ['400', '700']})
 
@@ -40,11 +41,13 @@ export default async function RootLayout({children}: { children: ReactNode }) {
             </LoggedInWrapper>
           </HeaderNav>
           <HeaderNav>
-            <HeaderLink href={'/register'} text={'Sign up'}/>
-            <HeaderLink href={'/login'} text={'Login'}/>
+            <LoggedOutWrapper>
+              <HeaderLink href={'/register'} text={'Sign up'}/>
+              <HeaderLink href={'/login'} text={'Login'}/>
+            </LoggedOutWrapper>
             <LoggedInWrapper>
               <LogoutButton/>
-            <HeaderLink href={'/profile'} text={'Profile'}/>
+              <HeaderLink href={'/profile'} text={'Profile'}/>
             </LoggedInWrapper>
           </HeaderNav>
         </Header>
