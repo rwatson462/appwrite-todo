@@ -1,5 +1,5 @@
 import type {Metadata} from "next"
-import {Comic_Neue} from "next/font/google"
+import {Inter} from "next/font/google"
 import "./globals.css"
 import {ReactNode} from "react"
 import {Footer} from "@/components/Footer"
@@ -12,7 +12,7 @@ import {LoggedInWrapper} from "@/components/Auth/LoggedInWrapper";
 import {getLoggedInUser} from "@/lib/server/appwrite";
 import {LoggedOutWrapper} from "@/components/Auth/LoggedOutWrapper";
 
-const comicNeue = Comic_Neue({subsets: ["latin"], weight: ['400', '700']})
+const inter = Inter({subsets: ["latin"], weight: ['400', '700']})
 
 export const metadata: Metadata = {
   title: "Appwrite / NextJS demo",
@@ -31,7 +31,7 @@ export default async function RootLayout({children}: { children: ReactNode }) {
 
   return (
     <html lang="en">
-    <body className={comicNeue.className}>
+    <body className={inter.className}>
       <AuthProvider user={user}>
         <Header>
           <HeaderNav>
