@@ -23,15 +23,16 @@ Creating a new project is easy:
 
 - [ ] Figure out emails for account verification (or turning it off)
 - [x] Add "Lists" page
-  - [ ] View list contents
-- [ ] Add "Todos" page
-  - [ ] Create todo form
+  - [x] View list contents
+- [x] Add "Todos" page
+  - [x] Create todo form
   - [ ] Edit todo form
   - [ ] Delete todo
   - [ ] Mark todo as done
-- [ ] Create default List when registering
+- [x] Create default List when registering
 - [ ] Add some content to a Dashboard
 - [ ] Add user profile page
   - [ ] Allow account deletion
   - [ ] Allow password change
   - [ ] Allow email change
+  - [ ] Allow account deletion
