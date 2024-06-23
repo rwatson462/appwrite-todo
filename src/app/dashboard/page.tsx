@@ -17,18 +17,18 @@ export default async function Page({}) {
   await redirectIfNotAuthenticated('/login')
 
   const user = await getLoggedInUser()
-  const lists = await getListsByUser(user!.$id)
+  const {documents: lists, total: listCount} = await getListsByUser(user!.$id)
 
   return (
     <Main>
       <PageTitle title={'Dashboard'} subtitle={'Welcome to the good stuff'} />
 
-      <section className={'space-y-2'}>
-        <h3 className='font-semibold text-lg'>You have {lists.total} list{lists.total !== 1 ? 's' : ''}</h3>
+      <section className={'space-y-8'}>
+        <h3 className='font-semibold text-lg'>You have {listCount} list{listCount !== 1 ? 's' : ''}</h3>
 
-        <ul className={'space-y-1'}>
-          { lists.documents.map(list => (
-            <li key={`document-${list.$id}`} className={'border-b pl-4'}>
+        <ul className={'space-y-1 border rounded-lg p-4 border'}>
+          { lists.map(list => (
+            <li key={`document-${list.$id}`}>
               <TextLink href={`/lists/${list.$id}`} text={list.name}/>
             </li>
           ))}
