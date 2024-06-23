@@ -22,13 +22,13 @@ Creating a new project is easy:
 ## Todo.
 
 - [ ] Figure out emails for account verification (or turning it off)
-- [ ] Add some "logged in" state passed
-- [ ] Create a wrapper to hide authenticated routes and components
-- [ ] Figure out redirects after posting forms (url param doesn't seem to do anything)
-- [ ] Add "Lists" page
-  - [ ] Create List form
-  - [ ] Show lists
+- [x] Add "Lists" page
   - [ ] View list contents
+- [ ] Add "Todos" page
+  - [ ] Create todo form
+  - [ ] Edit todo form
+  - [ ] Delete todo
+  - [ ] Mark todo as done
 - [ ] Create default List when registering
 - [ ] Add some content to a Dashboard
 - [ ] Add user profile page

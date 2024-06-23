@@ -3,6 +3,7 @@ import {PageTitle} from "@/components/PageTitle";
 import {Input} from "@/components/Form/Input";
 import {login} from "@/lib/server/actions/login";
 import {redirectIfAuthenticated} from "@/lib/server/redirectIfAuthenticated";
+import {TextLink} from "@/components/TextLink";
 
 /**
  * The login page.
@@ -15,6 +16,8 @@ export default async function Page({}) {
   return (
     <Main>
       <PageTitle title={'Login page'} subtitle={'Stick your details in below to access the good stuff'}/>
+
+      <p>Don't have an account? <TextLink href={'/register'} text={'Sign up here'}/></p>
 
       <form className={'space-y-4 max-w-md'} action={login}>
         <fieldset className={'grid grid-cols-2 gap-4 items-center'}>

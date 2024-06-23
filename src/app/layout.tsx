@@ -52,12 +52,13 @@ export default async function RootLayout({children}: { children: ReactNode }) {
         </Header>
 
         {children}
-        <Footer items={[
-          {href: 'https://appwrite.io', text: 'Appwrite'},
-          {href: 'https://vercel.app', text: 'Vercel'},
-          {href: 'https://github.com', text: 'Github'},
-          {href: 'https://threads.net', text: 'Threads'},
-        ]}/>
+
+        {/*<Footer items={[*/}
+        {/*  {href: 'https://appwrite.io', text: 'Appwrite'},*/}
+        {/*  {href: 'https://vercel.app', text: 'Vercel'},*/}
+        {/*  {href: 'https://github.com', text: 'Github'},*/}
+        {/*  {href: 'https://threads.net', text: 'Threads'},*/}
+        {/*]}/>*/}
       </AuthProvider>
     </body>
     </html>

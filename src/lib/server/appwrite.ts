@@ -12,37 +12,38 @@ import {SESSION_NAME} from "@/lib/config";
  */
 
 
-export async function createSessionClient() {
-  const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(process.env.APPWRITE_PROJECT_ID!)
+// Saves us creating many of these for a single server action request
+let sessionClient = new Client()
+  .setEndpoint('https://cloud.appwrite.io/v1')
+  .setProject(process.env.APPWRITE_PROJECT_ID!)
 
+let adminClient = new Client()
+  .setEndpoint('https://cloud.appwrite.io/v1')
+  .setProject(process.env.APPWRITE_PROJECT_ID!)
+  .setKey(process.env.APPWRITE_KEY!)
+
+export async function createSessionClient() {
   const session = cookies().get(SESSION_NAME)
   if (!session || !session.value) {
     throw new Error('No session')
   }
 
-  client.setSession(session.value)
+  sessionClient.setSession(session.value)
 
   return {
     get account() {
-      return new Account(client)
+      return new Account(sessionClient)
     },
     get databases() {
-      return new Databases(client)
+      return new Databases(sessionClient)
     }
   }
 }
 
 export async function createAdminClient() {
-  const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(process.env.APPWRITE_PROJECT_ID!)
-    .setKey(process.env.APPWRITE_KEY!);
-
   return {
     get account() {
-      return new Account(client);
+      return new Account(adminClient);
     },
   };
 }
@@ -56,7 +57,6 @@ export async function getLoggedInUser() {
     const { account } = await createSessionClient()
     return await account.get()
   } catch (error) {
-    console.log((error as AppwriteException))
     return null
   }
 }

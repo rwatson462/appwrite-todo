@@ -1,8 +1,10 @@
 'use server'
 
 import {ID} from "node-appwrite"
-import {login} from "@/lib/server/actions/login"
-import {createAdminClient} from "@/lib/server/appwrite";
+import {login} from "@/lib/server/commands/login"
+import {createAdminClient, getLoggedInUser} from "@/lib/server/appwrite";
+import {redirect} from "next/navigation";
+import {createListForUser} from "@/lib/server/commands/createListForUser";
 
 export async function registerUser(form: FormData) {
   'use server'
@@ -19,6 +21,13 @@ export async function registerUser(form: FormData) {
     console.error(err)
   }
 
-  // pass the register form straight through so we can reuse the login form action
-  await login(form)
+  // log the user in after registering
+  await login(email, password)
+
+  const user = await getLoggedInUser()
+
+  // create a default list for the user
+  await createListForUser('Default list', user!.$id)
+
+  redirect('/dashboard')
 }
