@@ -1,43 +1,35 @@
 import {Main} from "@/components/Main";
 import {PageTitle} from "@/components/PageTitle";
-import {createSessionClient, getLoggedInUser} from "@/lib/server/appwrite";
+import {getLoggedInUser} from "@/lib/server/appwrite";
 import {getListForUser} from "@/lib/server/queries/getListForUser";
 import {getTodosByListAndUser} from "@/lib/server/queries/getTodosByList";
 import {CreateTodoForm} from "@/components/Lists/Forms/CreateTodoForm";
+import {FaRegSquare, FaRegSquareCheck} from "react-icons/fa6";
+import {toggleTodoCompletionStatus} from "@/lib/server/actions/toggleTodoCompletionStatus";
 
-export default async function Page({params: { id } }: { params: { id: string } }) {
-  const { databases } = await createSessionClient()
+export default async function Page({params: {id}}: { params: { id: string } }) {
   const user = await getLoggedInUser()
 
-  /**
-   * todo: Add an error-boundary in here to handle not being able to get the list
-   */
-  try {
-    const list = await getListForUser(user!.$id, id)
-    const {documents: todos} = await getTodosByListAndUser(list.$id, user!.$id)
+  const list = await getListForUser(user!.$id, id)
+  const todos = await getTodosByListAndUser(list.$id, user!.$id)
 
-    return (
-      <Main>
-        <PageTitle title={list.name}/>
-        <p>ID: {id}</p>
-        <ul>
-          {todos.map(todo => (
-            <li key={todo.$id}>{todo.title}</li>
-          ))}
-        </ul>
+  return (
+    <Main>
+      <PageTitle title={list.name}/>
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.$id} className={'flex justify-between items-center'}>
+            <span className={todo.complete ? 'line-through opacity-50' : ''}>{todo.title}</span>
+            <form action={toggleTodoCompletionStatus}>
+              <input type="hidden" name={'todoId'} value={todo.$id}/>
+              <button type={'submit'}>{todo.complete ? <FaRegSquareCheck className={'text-emerald-600 h-4 w-4'}/> :
+                <FaRegSquare className={'text-gray-900 h-4 w-4'}/>}</button>
+            </form>
+          </li>
+        ))}
+      </ul>
 
-        <CreateTodoForm listId={list.$id}/>
-      </Main>
-    )
-  } catch(err) {
-    // @ts-ignore Yes, err.response.message does actually exist on an Appwrite exception
-    const message = err.response.message
-
-    return (
-      <Main>
-        <PageTitle title={'Oops'}/>
-        <p>{message}</p>
-      </Main>
-    )
-  }
+      <CreateTodoForm listId={list.$id}/>
+    </Main>
+  )
 }
