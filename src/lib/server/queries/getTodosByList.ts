@@ -6,7 +6,7 @@ import {Query} from "node-appwrite";
 export async function getTodosByListAndUser(listId: string, userId: string) {
   const { databases } = await createSessionClient()
 
-  return await databases.listDocuments(
+  const {documents} = await databases.listDocuments(
     process.env.APPWRITE_DB_ID!,
     process.env.APPWRITE_TODOS_COLLECTION_ID!,
     [
@@ -14,4 +14,6 @@ export async function getTodosByListAndUser(listId: string, userId: string) {
       Query.equal('list_id', listId),
     ],
   )
+
+  return documents
 }

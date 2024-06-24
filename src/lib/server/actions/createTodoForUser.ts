@@ -11,8 +11,6 @@ import {createTodoForUser as createTodoForUserCommand} from "@/lib/server/comman
  */
 
 export async function createTodoForUser(form: FormData) {
-  'use server'
-
   const user = await getLoggedInUser()
 
   if (user === null) {
